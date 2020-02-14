@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Container, Input, InputGroup, InputGroupAddon, CustomInput, CardBody, Button, Col, Row, Card, CardTitle, Pagination, PaginationItem, PaginationLink} from 'reactstrap'
+import React, {useState, useEffect} from 'react'
+import {Container, Input, InputGroup, InputGroupAddon, CustomInput, CardBody, Button, Col, Row, Card, CardTitle} from 'reactstrap'
 
 const style = {
     card:{
@@ -18,13 +18,8 @@ const style = {
     field:{
         padding:'.5rem', 
         fontWeight: 'lighter',
-        bsSize: "sm"
-        }, 
-    TextArea:{
-        marginTop: '.5rem',
-        padding:'.5rem', 
-        fontWeight: 'lighter',
-        bsSize: "sm"
+        bsSize: "sm",
+        fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
         }, 
     button:{
         bsSize: "sm",
@@ -34,25 +29,84 @@ const style = {
     label:{ 
         marginTop:'.5rem',
         marginBottom: '0rem',
-        fontColor:'black'
+        fontWeight: 'normal',
+        fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
     }
     }
 
 const TestCaseCreate = (props) => {  
     const [area, setArea] = useState('')
     const [category, setCategory] = useState('')
-    const [subcat1, setSubcat1] = useState('')
-    const [subcat2, setSubcat2] = useState('')
+    const [subcat, setSubcat] = useState('')
     const [status, setStatus] = useState('')
     const [expectation, setExpectation] = useState('')
     const [notes, setNotes] = useState('')
     const [details, setDetails] = useState('')
-    const [medium, setMedium] = useState('')
-    const [priority, setPriority] = useState('')
-    const [platform, setPlatform] = useState('')
-    const [testtype, setTesttype] = useState('')
-    const [jiraticket,setJiraticket] = useState('')
+    const [medium, setMedium] = useState([])
+    const [priority, setPriority] = useState([])
+    const [platform, setPlatform] = useState([])
+    const [testtype, setTesttype] = useState([])
     const [searchValue,setSearchValue] = useState('')
+    const [buttontext, setButtontext] = useState('Save')
+    const [deskphone, setDeskphone] = useState('')
+    const [sharpenq, setSharpenq] = useState('')
+    const [connectphone, setConnectphone] = useState('')
+    const [chrome, setChrome] = useState('')
+    const [firefox, setFirefox] = useState('')
+    const [ctisn, setCtisn] = useState('')
+    const [ctizd, setCtizd] = useState('')
+    const [ctisfdc, setCtisfdc] = useState('')
+    const [android, setAndroid] = useState('')
+    const [ios, setIos] = useState('')
+    const [connect, sectConnect] = useState('')
+    const [quick, setQuick] = useState('')
+    const [full, setFull] = useState('')
+    const [regression, setRegression] = useState('')
+    const [automated, setAutomated] = useState('')
+    const [inboundcall, setInboundcall] = useState('')
+    const [chat, setChat] = useState('')
+    const [email, setEmail] = useState('')
+    const [tweet, setTweet] = useState('')
+    const [tweetdm, setTweetdm] = useState('')
+    const [facebook, setFacebook] = useState('')
+    const [sms, setSms] = useState('')
+    const [casein, setCasein] = useState('')
+    const [voicemail, setVoicemail] = useState('')
+    const [insights, setInsights] = useState('')
+
+
+    useEffect(() => {
+        setDetails(props.testToGet.details);
+        setArea(props.testToGet.area)
+        setCategory(props.testToGet.category)
+        setSubcat(props.testToGet.subcat)
+        setStatus(props.testToGet.status)
+        setExpectation(props.testToGet.expectation)
+        setNotes(props.testToGet.notes)
+        setMedium(props.testToGet.medium)
+        setPriority(props.testToGet.priority)
+        setPlatform(props.testToGet.platform)
+        setTesttype(props.testToGet.testtype) 
+    }, [props.testToGet]
+    )
+
+
+    const clearData =() => {
+        setArea('')
+        setCategory('')
+        setSubcat('')
+        setStatus('')
+        setExpectation('')
+        setNotes('')
+        setDetails('')
+        setMedium('')
+        setPriority('')
+        setPlatform('')
+        setTesttype('')
+        setSearchValue('')
+        setButtontext('Save')
+    }
+
 
 const createTestCase = () => {
     fetch('http://localhost:3500/testcase/create', {
@@ -62,8 +116,7 @@ const createTestCase = () => {
                     testcase: {
                         area: area,
                         category: category,
-                        subcat1: subcat1,
-                        subcat2: subcat2,
+                        subcat: subcat,
                         details: details,
                         expectation:expectation,
                         notes: notes,
@@ -81,10 +134,10 @@ const createTestCase = () => {
         }).then(res => res.json())
         .then(logData => {
             console.log(logData)
+
             setArea('')
             setCategory('')
-            setSubcat1('')
-            setSubcat2('')
+            setSubcat('')
             setStatus('')
             setExpectation('')
             setNotes('')
@@ -96,8 +149,54 @@ const createTestCase = () => {
         })
     }
 
+    const EditTestCase = (id) => {
+        fetch(`http://localhost:3500/testcase/update/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify(
+                    {
+                        testcase: {
+                            area: area,
+                            category: category,
+                            subcat: subcat,
+                            details: details,
+                            expectation: expectation,
+                            notes: notes,
+                            status: status,
+                            medium:medium,
+                            platform:platform,
+                            testtype:testtype,
+                            priority:priority
+                    }
+                    }),
+                headers: new Headers({
+                    'Content-Type':'application/json',
+                    'Authorization':props.token
+                })
+            }).then(res => res.json())
+            .then(logData => {
+                console.log(logData)
+    
+                setArea('')
+                setCategory('')
+                setSubcat('')
+                setStatus('')
+                setExpectation('')
+                setNotes('')
+                setDetails('')
+                setMedium([])
+                setPriority([])
+                setPlatform([])
+                setTesttype([])
+                setButtontext('Save')
+            })
+        }
 
-
+const handleSave = () => {
+        if (buttontext === 'Save'){
+            return createTestCase();      
+        } else {
+            return EditTestCase(searchValue);}    
+}
 
 return(
 <div style={style.base}>
@@ -106,51 +205,58 @@ return(
     <Row>
         
         <Col sm='3'> 
+            <label htmlFor='searchArea' style={style.label}>Search for a Test Case</label>
             <InputGroup>
                 <InputGroupAddon addonType="append">
-                    <Button onClick={()=>{props.testToGet(searchValue)} }
-                    style={{backgroundColor: '#624292', height: '2.3rem', marginTop: '.5rem'}}> Submit</Button>
+                    <Button onClick={()=>{props.fetchOneTest(searchValue)
+                    setButtontext('Edit')
+                } }
+                    style={{backgroundColor: '#624292', height: '2.3rem'}}> Submit</Button>
                 </InputGroupAddon>
-                <Input style={style.TextArea} value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} placeholder='Search for testcase'/>
+                <Input style={style.field} type='text' value={searchValue} onChange={(e)=>setSearchValue(e.target.value)} placeholder='Search for testcase by ID'/>
             </InputGroup>
             <label htmlFor='area' style={style.label}>Application Area</label>
             <Input style={style.field} type='select' name='area' placeholder='Application Area' value={area} onChange={(e) => setArea(e.target.value)}>
-                {area.length === 0 && <option> No application areas added yet</option>}
-                {/* {area.length > 0 && <option>Select an Application Area</option>}
-                {area.map((area, i) => <option key={1}>{area}</option>)} */}
+                <option>Not Set</option>
+                <option>SharpenQ</option> 
+                <option>End User</option> 
+                <option>Admin</option> 
+                <option>Developer</option>
+                <option>Contacts</option>
+                <option>People</option> 
+                <option>SharpenDB</option> 
+                <option>SharpenQ Vue</option> 
+                <option>Logic/Action</option>
+                <option>MicroServices</option>
+                <option>Not Set</option>
+                <option>Transcriptions</option> 
+                <option>Recordings</option> >
             </Input>
             <label htmlFor='category' style={style.label}>Category</label>
             <Input  style={style.field} type='select' name='category' placeholder= 'Category' value={category} onChange={(e) => setCategory(e.target.value)}>
                 <option>Not Set</option>
-                <option>category1</option>
-                <option>category2</option>               
+                <option>Inbound</option> 
+                <option>Outbound</option> 
+                <option>History</option> 
+                <option>Auto Answer</option>
+                <option>Header</option>
+                <option>Tabs</option> 
+                <option>End Interaction</option> 
+                <option>SharpenDB</option> 
+                <option>Auto Attendant</option>
             </Input> 
-            <label htmlFor='subcat1' style={style.label}>SubCategory 1</label>
-            <Input style={style.field} type='select' name='subcat1' placeholder='Subcategory1' value={subcat1} onChange={(e) => setSubcat1(e.target.value)}>
+                <label htmlFor='subcat' style={style.label}>SubCategory</label>
+            <Input style={style.field} type='select' name='subcat' placeholder='Subcategory1' value={subcat} onChange={(e) => setSubcat(e.target.value)}>
                 <option>Not Set</option>
-                <option>subcat1-a</option> 
-                <option>subcat1-b</option> 
+                <option>One</option> 
+                <option>Two</option> 
+                <option>Three</option> 
+                <option>Four</option>
             </Input>
-            <label htmlFor='subcat2' style={style.label}>SubCategory 2</label>
-            <Input style={style.field} type='select' name='subcat2' placeholder='Subcategory2' value={subcat2} onChange={(e) => setSubcat2(e.target.value)} >
-                <option>Not Set</option>
-                <option>subcat2-a</option> 
-                <option>subcat2-b</option> 
-            </Input>
-        </Col>
-
-        <Col sm='9'>
-            <Input style={style.TextArea} type='textarea' placeholder = 'Test Details' value={details} onChange={(e) => setDetails(e.target.value)} /> 
-            <Input style={style.TextArea} type='textarea' name='Expectation' placeholder = 'Expectation' value={expectation} onChange={(e) => setExpectation(e.target.value)} />
-            <Input style={style.TextArea} type='textarea' name='Notes' placeholder = 'Additional Notes'value={notes} onChange={(e) => setNotes(e.target.value)} />    
             <Row>  
-                <Col sm='2'>
-                <label htmlFor='JIRA' style={style.label}>Relates to</label>
-                    <Input style={style.TextArea} type='text' name='JIRA Ticket' placeholder='JIRA Ticket'value={jiraticket} onChange={(e) => setJiraticket(e.target.value)}/>   
-                </Col>
-                <Col sm='2'>
+                <Col>
                 <label htmlFor='status' style={style.label}>Status</label>
-                    <Input style={style.TextArea} type= 'select' name='status' placeholder='Status' value={status} onChange={(e) => setStatus(e.target.value)}>
+                    <Input style={style.field} type= 'select' name='status' placeholder='Status' value={status} onChange={(e) => setStatus(e.target.value)}>
                         <option>Not Set</option>
                         <option>Draft</option> 
                         <option>Active</option> 
@@ -158,12 +264,19 @@ return(
                         <option>Rework</option>
                     </Input>
                 </Col>
-                <Col sm='7' /> 
             </Row>
+        </Col>
+        <Col sm='9'>
+        <label htmlFor='details' style={style.label}>Test Details</label>
+            <Input style={style.field} type='textarea' placeholder = 'Test Details' value={details} onChange={(e) => setDetails(e.target.value)} /> 
+        <label htmlFor='expectation' style={style.label}>Expected Behavior</label>
+            <Input style={style.field} type='textarea' name='Expectation' placeholder = 'Expectation' value={expectation} onChange={(e) => setExpectation(e.target.value)} />
+        <label htmlFor='notes' style={style.label}>Additional Notes</label>
+            <Input style={style.field} type='textarea' name='Notes' placeholder = 'Additional Notes'value={notes} onChange={(e) => setNotes(e.target.value)} />    
         </Col>
     </Row> 
 </Container>
-
+<br />
 <br />
 <Container fluid={true}>
 <Row>
@@ -173,11 +286,11 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="deskphone" name="DeskPhone" label="Desk Phone"/>
-                        <CustomInput type="switch" id="sharpenq" name="sharpenq" label="Sharpen Q" />
+                        <CustomInput type="switch" id="deskphone" name="DeskPhone" label="Desk Phone" value={deskphone} onChange={(e) => setDeskphone(e.target.value)}/>
+                        <CustomInput type="switch" id="sharpenq" name="sharpenq" label="Sharpen Q" value={sharpenq} onChange={(e) => setSharpenq(e.target.value)} />
                     </Col>
                     <Col>
-                        <CustomInput type="switch" id="connect" name="connect" label="Connect Phone" />
+                        <CustomInput type="switch" id="connectphone" name="connectPhone" label="Connect Phone" value={connectphone} onChange={(e) => setConnectphone(e.target.value)} />
                     </Col>
                 </Row>
             </CardBody>
@@ -190,16 +303,16 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="chrome" name="chrome" label="Chrome" />
-                        <CustomInput type="switch" id="firefox" name="firefox" label="FireFox" />
-                        <CustomInput type="switch" id="CTI:SN" name="CTI:SN" label="CTI: ServiceNow" />
-                        <CustomInput type="switch" id="CTI:ZD" name="CTI:ZD" label="CTI: ZenDesk" />       
+                        <CustomInput type="switch" id="chrome" name="chrome" label="Chrome" value={chrome} onChange={(e) => setChrome(e.target.value)} />
+                        <CustomInput type="switch" id="firefox" name="firefox" label="FireFox" value={firefox} onChange={(e) => setFirefox(e.target.value)} />
+                        <CustomInput type="switch" id="ctisn" name="ctisn" label="CTI: ServiceNow" value={ctisn} onChange={(e) => setCtisn(e.target.value)} />
+                        <CustomInput type="switch" id="ctizd" name="ctizd" label="CTI: ZenDesk" value={ctizd} onChange={(e) => setCtizd(e.target.value)}/>       
                     </Col>
                     <Col>
-                        <CustomInput type="switch" id="CTI:SFDC" name="CTI:SFDC" label="CTI: Salesforce" />
-                        <CustomInput type="switch" id="android" name="android" label="Android Mobile" />
-                        <CustomInput type="switch" id="IoS" name="Ios" label="IoS Mobile" />
-                        <CustomInput type="switch" id="connect" name="connect" label="Connect" />
+                        <CustomInput type="switch" id="ctisfdc" name="ctisfdc" label="CTI: Salesforce" value={ctisfdc} onChange={(e) => setCtisfdc(e.target.value)}/>
+                        <CustomInput type="switch" id="android" name="android" label="Android Mobile" value={android} onChange={(e) => setAndroid(e.target.value)}/>
+                        <CustomInput type="switch" id="ios" name="ios" label="IoS Mobile" value={ios} onChange={(e) => setIos(e.target.value)}/>
+                        <CustomInput type="switch" id="connect" name="connect" label="Connect Desktop" value={connect} onChange={(e) => sectConnect(e.target.value)}/>
                     </Col>
                 </Row>
             </CardBody>
@@ -212,12 +325,12 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="quick" name="quick" label="Quick" />
-                        <CustomInput type="switch" id="full" name="full" label="Full" />
+                        <CustomInput type="switch" id="quick" name="quick" label="Quick" value={quick} onChange={(e) => setQuick(e.target.value)}/>
+                        <CustomInput type="switch" id="full" name="full" label="Full" value={full} onChange={(e) => setFull(e.target.value)} />
                     </Col>
                     <Col>
-                        <CustomInput type="switch" id="regression" name="regression" label="Regression" />
-                        <CustomInput type="switch" id="automated" name="automated" label="Automated" />
+                        <CustomInput type="switch" id="regression" name="regression" label="Regression" value={regression} onChange={(e) => setRegression(e.target.value)}/>
+                        <CustomInput type="switch" id="automated" name="automated" label="Automated" value={automated} onChange={(e) => setAutomated(e.target.value)}/>
                     </Col>
                 </Row>
             </CardBody>
@@ -230,18 +343,18 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="inboundcall" name="inboundcall" label="Inbound Call" />
-                        <CustomInput type="switch" id="chat" name="chat" label="Chat" />
-                        <CustomInput type="switch" id="email" name="email" label="Email" />
-                        <CustomInput type="switch" id="tweet" name="tweet" label="Tweet" />
-                        <CustomInput type="switch" id="tweetdm" name="tweetdm" label="Tweet DM" />
+                        <CustomInput type="switch" id="inboundcall" name="inboundcall" label="Inbound Call" value={inboundcall} onChange={(e) => setInboundcall(e.target.value)} />
+                        <CustomInput type="switch" id="chat" name="chat" label="Chat" value={chat} onChange={(e) => setChat(e.target.value)}/>
+                        <CustomInput type="switch" id="email" name="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <CustomInput type="switch" id="tweet" name="tweet" label="Tweet" value={tweet} onChange={(e) => setTweet(e.target.value)}/>
+                        <CustomInput type="switch" id="tweetdm" name="tweetdm" label="Tweet DM" value={tweetdm} onChange={(e) => setTweetdm(e.target.value)}/>
                     </Col>
                     <Col>                     
-                        <CustomInput type="switch" id="facebook" name="facebook" label="Facebook" />
-                        <CustomInput type="switch" id="SMS" name="SMS" label="SMS" />
-                        <CustomInput type="switch" id="casein" name="casein" label="CaseIn" />
-                        <CustomInput type="switch" id="voicemail" name="voicemail" label="Voicemail" />
-                        <CustomInput type="switch" id="insights" name="insights" label="Insights" />
+                        <CustomInput type="switch" id="facebook" name="facebook" label="Facebook" value={facebook} onChange={(e) => setFacebook(e.target.value)}/>
+                        <CustomInput type="switch" id="sms" name="sms" label="SMS" value={sms} onChange={(e) => setSms(e.target.value)}/>
+                        <CustomInput type="switch" id="casein" name="casein" label="CaseIn" value={casein} onChange={(e) => setCasein(e.target.value)}/>
+                        <CustomInput type="switch" id="voicemail" name="voicemail" label="Voicemail" value={voicemail} onChange={(e) => setVoicemail(e.target.value)}/>
+                        <CustomInput type="switch" id="insights" name="insights" label="Insights" value={insights} onChange={(e) => setInsights(e.target.value)}/>
                     </Col>
                 </Row>
             </CardBody>
@@ -251,11 +364,9 @@ return(
 <br />
 <Row className="form-row text-center">
     <Col>
-        <PaginationLink previous >Prev </PaginationLink>
-        <PaginationLink next>Next</PaginationLink>
-        <Button></Button>
-        <Button style={style.button} onClick={createTestCase} >Save</Button>
-        <Button style={style.button}>Cancel</Button>
+        <Button style={style.button} onClick={() => {handleSave()}}>{buttontext}</Button>
+        <Button style={style.button} onClick={event => window.location.href='/'}>Cancel</Button>
+        <Button style={style.button} onClick={clearData} >Clear Form</Button>
     </Col> 
 </Row>
 </Container>

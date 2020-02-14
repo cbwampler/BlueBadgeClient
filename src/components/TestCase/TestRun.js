@@ -1,6 +1,5 @@
-import React from 'react';
-import { Table, Button, Input} from 'reactstrap';
-import ReactDataGrid from 'react-data-grid'
+import React, {useEffect} from 'react';
+import { Table, Button, Input} from 'reactstrap'
 
 const style = {
     field:{
@@ -17,6 +16,10 @@ const style = {
 
     
 const TestRun = (props) => {
+
+    useEffect(() => {
+        props.fetchTests(); 
+    }, [])
 
 const deleteTestcase = (testcase) => {
     fetch(`http://localhost:3500/testcase/delete/${testcase.id}`, {
@@ -37,8 +40,7 @@ const testcaseMapper = () => {
                 <th scope="row">{test.id}</th>
                 <td>{test.area}</td>
                 <td>{test.category}</td>
-                <td>{test.subcat1}</td>
-                <td>{test.subcat2}</td>
+                <td>{test.subcat}</td>
                 <td>{test.details}</td>
                 <td>{test.expectation}</td>
                 <td>{test.result}<Input style={style.field} type='select' name='result' placeholder='result'>
@@ -61,15 +63,15 @@ const testcaseMapper = () => {
 return(
     
 <div>  
-    <br />
+<h2 className="text-center">Test Case List</h2>
+
 <Table size="sm" style={style.base} striped responsive>
     <thead>
     <tr>
         <th width='2%'>#</th>
         <th width='5%'>Application Area</th>
         <th width='5%'>Category</th>
-        <th width='5%'>SubCat1</th>
-        <th width='5%'>SubCat2</th>
+        <th width='5%'>SubCat</th>
         <th width='25%'>Test Details</th>
         <th width='25%'>Expectation</th>
         <th width='5%' >Result</th>
