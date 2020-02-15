@@ -45,31 +45,34 @@ const TestCaseCreate = (props) => {
     const [details, setDetails] = useState('')
     const [searchValue,setSearchValue] = useState('')
     const [buttontext, setButtontext] = useState('Save')
-    const [deskphone, setDeskphone] = useState(false)
-    const [sharpenq, setSharpenq] = useState(false)
-    const [connectphone, setConnectphone] = useState(false)
-    const [chrome, setChrome] = useState(false)
-    const [firefox, setFirefox] = useState(false)
-    const [ctisn, setCtisn] = useState(false)
-    const [ctizd, setCtizd] = useState(false)
-    const [ctisfdc, setCtisfdc] = useState(false)
-    const [android, setAndroid] = useState(false)
-    const [ios, setIos] = useState(false)
-    const [connect, setConnect] = useState(false)
-    const [quick, setQuick] = useState(false)
-    const [full, setFull] = useState(false)
-    const [regression, setRegression] = useState(false)
-    const [automated, setAutomated] = useState(false)
-    const [inboundcall, setInboundcall] = useState(false)
-    const [chat, setChat] = useState(false)
-    const [email, setEmail] = useState(false)
-    const [tweet, setTweet] = useState(false)
-    const [tweetdm, setTweetdm] = useState(false)
-    const [facebook, setFacebook] = useState(false)
-    const [sms, setSms] = useState(false)
-    const [casein, setCasein] = useState(false)
-    const [voicemail, setVoicemail] = useState(false)
-    const [insights, setInsights] = useState(false)
+    const [deskphone, setDeskphone] = useState()
+    const [sharpenq, setSharpenq] = useState()
+    const [connectphone, setConnectphone] = useState()
+    const [chrome, setChrome] = useState()
+    const [firefox, setFirefox] = useState()
+    const [ctisn, setCtisn] = useState()
+    const [ctizd, setCtizd] = useState()
+    const [ctisfdc, setCtisfdc] = useState()
+    const [android, setAndroid] = useState()
+    const [ios, setIos] = useState()
+    const [connect, setConnect] = useState()
+    const [quick, setQuick] = useState()
+    const [full, setFull] = useState()
+    const [regression, setRegression] = useState()
+    const [automated, setAutomated] = useState()
+    const [inboundcall, setInboundcall] = useState()
+    const [chat, setChat] = useState()
+    const [email, setEmail] = useState()
+    const [tweet, setTweet] = useState()
+    const [tweetdm, setTweetdm] = useState()
+    const [facebook, setFacebook] = useState()
+    const [sms, setSms] = useState()
+    const [casein, setCasein] = useState()
+    const [voicemail, setVoicemail] = useState()
+    const [insights, setInsights] = useState()
+    const [isCheckedDeskphone, setIsCheckedDeskphone] = useState("")
+    const [isCheckedSharpenq, setIsCheckedSharpenq] = useState("")
+    const [isCheckedConnectphone, setIsCheckedConnectphone] = useState("")
 
     useEffect(() => {
         setDetails(props.testToGet.details);
@@ -116,31 +119,31 @@ const TestCaseCreate = (props) => {
         setNotes('')
         setDetails('')
         setSearchValue('')
-        setDeskphone(false)
-        setSharpenq(false)
-        setConnectphone(false)
-        setChrome(false)
-        setFirefox(false)
-        setCtisn(false)
-        setCtizd(false)
-        setCtisfdc(false)
-        setAndroid(false)
-        setIos(false)
-        setConnect(false)
-        setQuick(false)
-        setFull(false)
-        setRegression(false)
-        setAutomated(false)
-        setInboundcall(false)
-        setChat(false)
-        setEmail(false)
-        setTweet(false)
-        setTweetdm(false)
-        setFacebook(false)
-        setSms(false)
-        setCasein(false)
-        setVoicemail(false)
-        setInsights(false)        
+        setDeskphone()
+        setSharpenq()
+        setConnectphone()
+        setChrome()
+        setFirefox()
+        setCtisn()
+        setCtizd()
+        setCtisfdc()
+        setAndroid()
+        setIos()
+        setConnect()
+        setQuick()
+        setFull()
+        setRegression()
+        setAutomated()
+        setInboundcall()
+        setChat()
+        setEmail()
+        setTweet()
+        setTweetdm()
+        setFacebook()
+        setSms()
+        setCasein()
+        setVoicemail()
+        setInsights()        
         setButtontext('Save')
     }
 
@@ -191,7 +194,6 @@ const createTestCase = () => {
         }).then(res => res.json())
         .then(logData => {
             console.log(logData)
-
             setArea('')
             setCategory('')
             setSubcat('')
@@ -199,31 +201,31 @@ const createTestCase = () => {
             setExpectation('')
             setNotes('')
             setDetails('')
-            setDeskphone(false)
-            setSharpenq(false)
-            setConnectphone(false)
-            setChrome(false)
-            setFirefox(false)
-            setCtisn(false)
-            setCtizd(false)
-            setCtisfdc(false)
-            setAndroid(false)
-            setIos(false)
-            setConnect(false)
-            setQuick(false)
-            setFull(false)
-            setRegression(false)
-            setAutomated(false)
-            setInboundcall(false)
-            setChat(false)
-            setEmail(false)
-            setTweet(false)
-            setTweetdm(false)
-            setFacebook(false)
-            setSms(false)
-            setCasein(false)
-            setVoicemail(false)
-            setInsights(false)        
+            setDeskphone()
+            setSharpenq()
+            setConnectphone()
+            setChrome()
+            setFirefox()
+            setCtisn()
+            setCtizd()
+            setCtisfdc()
+            setAndroid()
+            setIos()
+            setConnect()
+            setQuick()
+            setFull()
+            setRegression()
+            setAutomated()
+            setInboundcall()
+            setChat()
+            setEmail()
+            setTweet()
+            setTweetdm()
+            setFacebook()
+            setSms()
+            setCasein()
+            setVoicemail()
+            setInsights()        
         })
     }
 
@@ -240,13 +242,38 @@ const createTestCase = () => {
                             expectation: expectation,
                             notes: notes,
                             status: status,
+                            deskphone: deskphone,
+                            sharpenq: sharpenq,
+                            connectphone: connectphone,
+                            chrome: chrome,
+                            firefox: firefox,
+                            ctisn: ctisn,
+                            ctizd: ctizd,
+                            ctisfdc: ctisfdc,
+                            android: android,
+                            ios: ios,
+                            connect: connect,
+                            quick: quick,
+                            full: full,
+                            regression: regression,
+                            automated: automated,
+                            inboundcall: inboundcall,
+                            chat: chat,
+                            email: email,
+                            tweet: tweet,
+                            tweetdm: tweetdm,
+                            facebook: facebook,
+                            sms: sms,
+                            casein: casein,
+                            voicemail: voicemail,
+                            insights: insights
                     }
                     }),
                 headers: new Headers({
                     'Content-Type':'application/json',
                     'Authorization':props.token
                 })
-            }).then(res => res.json(false))
+            }).then(res => res.json())
             .then(logData => {
                 console.log(logData)
                 setArea('')
@@ -256,31 +283,31 @@ const createTestCase = () => {
                 setExpectation('')
                 setNotes('')
                 setDetails('')
-                setDeskphone(false)
-                setSharpenq(false)
-                setConnectphone(false)
-                setChrome(false)
-                setFirefox(false)
-                setCtisn(false)
-                setCtizd(false)
-                setCtisfdc(false)
-                setAndroid(false)
-                setIos(false)
-                setConnect(false)
-                setQuick(false)
-                setFull(false)
-                setRegression(false)
-                setAutomated(false)
-                setInboundcall(false)
-                setChat(false)
-                setEmail(false)
-                setTweet(false)
-                setTweetdm(false)
-                setFacebook(false)
-                setSms(false)
-                setCasein(false)
-                setVoicemail(false)
-                setInsights(false)        
+                setDeskphone()
+                setSharpenq()
+                setConnectphone()
+                setChrome()
+                setFirefox()
+                setCtisn()
+                setCtizd()
+                setCtisfdc()
+                setAndroid()
+                setIos()
+                setConnect()
+                setQuick()
+                setFull()
+                setRegression()
+                setAutomated()
+                setInboundcall()
+                setChat()
+                setEmail()
+                setTweet()
+                setTweetdm()
+                setFacebook()
+                setSms()
+                setCasein()
+                setVoicemail()
+                setInsights()        
                 setButtontext('Save')
                 setSearchValue('')
             })
@@ -381,11 +408,11 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="deskphone" name="DeskPhone" label="Desk Phone" value={deskphone} onChange={(e) => setDeskphone(e.target.value)}/>
-                        <CustomInput type="switch" id="sharpenq" name="sharpenq" label="Sharpen Q" value={sharpenq} onChange={(e) => setSharpenq(e.target.value)} />
+                        <CustomInput type="switch" id="deskphone" name="DeskPhone" label="Desk Phone" checked={isCheckedDeskphone} onChange={() => isCheckedDeskphone.length > 0 ? setIsCheckedDeskphone('') : setIsCheckedDeskphone("true")} />
+                        <CustomInput type="switch" id="sharpenq" name="sharpenq" label="Sharpen Q" checked={isCheckedSharpenq} onChange={() => isCheckedSharpenq.length > 0 ? setIsCheckedSharpenq('') : setIsCheckedSharpenq("true")} />
                     </Col>
                     <Col>
-                        <CustomInput type="switch" id="connectphone" name="connectPhone" label="Connect Phone" value={connectphone} onChange={(e) => setConnectphone(e.target.value)} />
+                        <CustomInput type="switch" id="connectphone" name="connectPhone" label="Connect Phone" checked={isCheckedConnectphone} onChange={() => isCheckedConnectphone.length > 0 ? setIsCheckedConnectphone('') : setIsCheckedConnectphone('true')} />
                     </Col>
                 </Row>
             </CardBody>
@@ -398,16 +425,16 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="chrome" name="chrome" label="Chrome" value={chrome} onChange={(e) => setChrome(e.target.value)} />
-                        <CustomInput type="switch" id="firefox" name="firefox" label="FireFox" value={firefox} onChange={(e) => setFirefox(e.target.value)} />
-                        <CustomInput type="switch" id="ctisn" name="ctisn" label="CTI: ServiceNow" value={ctisn} onChange={(e) => setCtisn(e.target.value)} />
-                        <CustomInput type="switch" id="ctizd" name="ctizd" label="CTI: ZenDesk" value={ctizd} onChange={(e) => setCtizd(e.target.value)}/>       
+                        <CustomInput type="switch" id="chrome" name="chrome" label="Chrome" value={chrome} onClick={(e) => setChrome(e.target.checked)} />
+                        <CustomInput type="switch" id="firefox" name="firefox" label="FireFox" value={firefox} onChange={(e) => setFirefox(e.target.checked)} />
+                        <CustomInput type="switch" id="ctisn" name="ctisn" label="CTI: ServiceNow" value={ctisn} onChange={(e) => setCtisn(e.target.checked)} />
+                        <CustomInput type="switch" id="ctizd" name="ctizd" label="CTI: ZenDesk" value={ctizd} onChange={(e) => setCtizd(e.target.checked)}/>       
                     </Col>
                     <Col>
-                        <CustomInput type="switch" id="ctisfdc" name="ctisfdc" label="CTI: Salesforce" value={ctisfdc} onChange={(e) => setCtisfdc(e.target.value)}/>
-                        <CustomInput type="switch" id="android" name="android" label="Android Mobile" value={android} onChange={(e) => setAndroid(e.target.value)}/>
-                        <CustomInput type="switch" id="ios" name="ios" label="IoS Mobile" value={ios} onChange={(e) => setIos(e.target.value)}/>
-                        <CustomInput type="switch" id="connect" name="connect" label="Connect Desktop" value={connect} onChange={(e) => setConnect(e.target.value)}/>
+                        <CustomInput type="switch" id="ctisfdc" name="ctisfdc" label="CTI: Salesforce" value={ctisfdc} onChange={(e) => setCtisfdc(e.target.checked)}/>
+                        <CustomInput type="switch" id="android" name="android" label="Android Mobile" value={android} onChange={(e) => setAndroid(e.target.checked)}/>
+                        <CustomInput type="switch" id="ios" name="ios" label="IoS Mobile" value={ios} onChange={(e) => setIos(e.target.checked)}/>
+                        <CustomInput type="switch" id="connect" name="connect" label="Connect Desktop" value={connect} onChange={(e) => setConnect(e.target.checked)}/>
                     </Col>
                 </Row>
             </CardBody>
