@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { Table, Button, Input} from 'reactstrap'
+import APIURL from '../../helpers/environment'
 
 const style = {
     field:{
@@ -22,7 +23,7 @@ const TestRun = (props) => {
     }, [])
 
 const deleteTestcase = (testcase) => {
-    fetch(`http://localhost:3500/testcase/delete/${testcase.id}`, {
+    fetch(`${APIURL}/testcase/delete/${testcase.id}`, {
         method: 'DELETE',
         headers: new Headers({
             'Content-Type': 'application/json',

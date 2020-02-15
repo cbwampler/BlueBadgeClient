@@ -5,6 +5,7 @@ import TestCaseCreate from './TestCaseCreate'
 // import TestList from './TestList'
 import TestRun from './TestRun'
 import Sitebar from '../Navbar/Navbar'
+import APIURL from '../../helpers/environment'
 
 const TestIndex = (props) => {
 document.body.style = 'background: #EFECF3';
@@ -12,7 +13,7 @@ const [tests, setTests] = useState([]);
 const [testToGet, setTestToGet] = useState({})
 
 const fetchTests = () => {
-    fetch('http://localhost:3500/testcase/allcases', {
+    fetch(`${APIURL}/testcase/allcases`, {
         method: 'GET',
         headers: new Headers ({
             'Content-Type':'application/json',
@@ -27,7 +28,7 @@ const fetchTests = () => {
 }
 
 const fetchOneTest = (id) => {
-    fetch(`http://localhost:3500/testcase/${id}`, {
+    fetch(`${APIURL}/testcase/${id}`, {
         method: 'GET',
         headers: new Headers ({
             'Content-Type':'application/json',

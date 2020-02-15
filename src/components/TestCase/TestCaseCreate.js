@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Container, Input, InputGroup, InputGroupAddon, CustomInput, CardBody, Button, Col, Row, Card, CardTitle} from 'reactstrap'
+import APIURL from '../../helpers/environment'
 
 const style = {
     card:{
@@ -144,7 +145,7 @@ const TestCaseCreate = (props) => {
     }
 
 const createTestCase = () => {
-    fetch('http://localhost:3500/testcase/create', {
+    fetch(`${APIURL}/testcase/create`, {
             method: 'POST',
             body: JSON.stringify(
                 {
@@ -205,7 +206,7 @@ const createTestCase = () => {
     }
 
     const EditTestCase = (id) => {
-        fetch(`http://localhost:3500/testcase/update/${id}`, {
+        fetch(`${APIURL}/testcase/update/${id}`, {
                 method: 'PUT',
                 body: JSON.stringify(
                     {
