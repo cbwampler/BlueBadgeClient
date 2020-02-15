@@ -278,7 +278,7 @@ return(
     <Row>
         
         <Col sm='3'> 
-            <label htmlFor='searchArea' style={style.label}>Search for a Test Case</label>
+            <label htmlFor='searchArea' style={style.label}>Search for a Test Case to Edit</label>
             <InputGroup>
                 <InputGroupAddon addonType="append">
                     <Button onClick={()=>{props.fetchOneTest(searchValue)
