@@ -42,38 +42,33 @@ const TestCaseCreate = (props) => {
     const [expectation, setExpectation] = useState('')
     const [notes, setNotes] = useState('')
     const [details, setDetails] = useState('')
-    const [medium, setMedium] = useState([])
-    const [priority, setPriority] = useState([])
-    const [platform, setPlatform] = useState([])
-    const [testtype, setTesttype] = useState([])
     const [searchValue,setSearchValue] = useState('')
     const [buttontext, setButtontext] = useState('Save')
-    const [deskphone, setDeskphone] = useState('')
-    const [sharpenq, setSharpenq] = useState('')
-    const [connectphone, setConnectphone] = useState('')
-    const [chrome, setChrome] = useState('')
-    const [firefox, setFirefox] = useState('')
-    const [ctisn, setCtisn] = useState('')
-    const [ctizd, setCtizd] = useState('')
-    const [ctisfdc, setCtisfdc] = useState('')
-    const [android, setAndroid] = useState('')
-    const [ios, setIos] = useState('')
-    const [connect, sectConnect] = useState('')
-    const [quick, setQuick] = useState('')
-    const [full, setFull] = useState('')
-    const [regression, setRegression] = useState('')
-    const [automated, setAutomated] = useState('')
-    const [inboundcall, setInboundcall] = useState('')
-    const [chat, setChat] = useState('')
-    const [email, setEmail] = useState('')
-    const [tweet, setTweet] = useState('')
-    const [tweetdm, setTweetdm] = useState('')
-    const [facebook, setFacebook] = useState('')
-    const [sms, setSms] = useState('')
-    const [casein, setCasein] = useState('')
-    const [voicemail, setVoicemail] = useState('')
-    const [insights, setInsights] = useState('')
-
+    const [deskphone, setDeskphone] = useState(false)
+    const [sharpenq, setSharpenq] = useState(false)
+    const [connectphone, setConnectphone] = useState(false)
+    const [chrome, setChrome] = useState()
+    const [firefox, setFirefox] = useState()
+    const [ctisn, setCtisn] = useState()
+    const [ctizd, setCtizd] = useState()
+    const [ctisfdc, setCtisfdc] = useState()
+    const [android, setAndroid] = useState()
+    const [ios, setIos] = useState()
+    const [connect, setConnect] = useState()
+    const [quick, setQuick] = useState()
+    const [full, setFull] = useState()
+    const [regression, setRegression] = useState()
+    const [automated, setAutomated] = useState()
+    const [inboundcall, setInboundcall] = useState()
+    const [chat, setChat] = useState()
+    const [email, setEmail] = useState()
+    const [tweet, setTweet] = useState()
+    const [tweetdm, setTweetdm] = useState()
+    const [facebook, setFacebook] = useState()
+    const [sms, setSms] = useState()
+    const [casein, setCasein] = useState()
+    const [voicemail, setVoicemail] = useState()
+    const [insights, setInsights] = useState()
 
     useEffect(() => {
         setDetails(props.testToGet.details);
@@ -83,13 +78,33 @@ const TestCaseCreate = (props) => {
         setStatus(props.testToGet.status)
         setExpectation(props.testToGet.expectation)
         setNotes(props.testToGet.notes)
-        setMedium(props.testToGet.medium)
-        setPriority(props.testToGet.priority)
-        setPlatform(props.testToGet.platform)
-        setTesttype(props.testToGet.testtype) 
+        setDeskphone(props.testToGet.deskphone)
+        setSharpenq(props.testToGet.sharpenq)
+        setConnectphone(props.testToGet.connectphone)
+        setChrome(props.testToGet.chrome)
+        setFirefox(props.testToGet.firefox)
+        setCtisn(props.testToGet.citsn)
+        setCtizd(props.testToGet.ctizd)
+        setCtisfdc(props.testToGet.ctisfdc)
+        setAndroid(props.testToGet.android)
+        setIos(props.testToGet.ios)
+        setConnect(props.testToGet.connect)
+        setQuick(props.testToGet.quick)
+        setFull(props.testToGet.full)
+        setRegression(props.testToGet.regression)
+        setAutomated(props.testToGet.automated)
+        setInboundcall(props.testToGet.inboundcall)
+        setChat(props.testToGet.chat)
+        setEmail(props.testToGet.email)
+        setTweet(props.testToGet.tweet)
+        setTweetdm(props.testToGet.tweetdm)
+        setFacebook(props.testToGet.facebook)
+        setSms(props.testToGet.sms)
+        setCasein(props.testToGet.casein)
+        setVoicemail(props.testToGet.voicemail)
+        setInsights(props.testToGet.insights)
     }, [props.testToGet]
     )
-
 
     const clearData =() => {
         setArea('')
@@ -99,14 +114,34 @@ const TestCaseCreate = (props) => {
         setExpectation('')
         setNotes('')
         setDetails('')
-        setMedium('')
-        setPriority('')
-        setPlatform('')
-        setTesttype('')
         setSearchValue('')
+        setDeskphone()
+        setSharpenq()
+        setConnectphone()
+        setChrome()
+        setFirefox()
+        setCtisn()
+        setCtizd()
+        setCtisfdc()
+        setAndroid()
+        setIos()
+        setConnect()
+        setQuick()
+        setFull()
+        setRegression()
+        setAutomated()
+        setInboundcall()
+        setChat()
+        setEmail()
+        setTweet()
+        setTweetdm()
+        setFacebook()
+        setSms()
+        setCasein()
+        setVoicemail()
+        setInsights()        
         setButtontext('Save')
     }
-
 
 const createTestCase = () => {
     fetch('http://localhost:3500/testcase/create', {
@@ -121,10 +156,9 @@ const createTestCase = () => {
                         expectation:expectation,
                         notes: notes,
                         status: status,
-                        medium:medium,
-                        platform:platform,
-                        testtype:testtype,
-                        priority:priority
+                        deskphone: deskphone,
+                        sharpenq: sharpenq,
+                        connectphone: connectphone
                 }
                 }),
             headers: new Headers({
@@ -142,10 +176,31 @@ const createTestCase = () => {
             setExpectation('')
             setNotes('')
             setDetails('')
-            setMedium('')
-            setPriority('')
-            setPlatform('')
-            setTesttype('')
+            setDeskphone()
+            setSharpenq()
+            setConnectphone()
+            setChrome()
+            setFirefox()
+            setCtisn()
+            setCtizd()
+            setCtisfdc()
+            setAndroid()
+            setIos()
+            setConnect()
+            setQuick()
+            setFull()
+            setRegression()
+            setAutomated()
+            setInboundcall()
+            setChat()
+            setEmail()
+            setTweet()
+            setTweetdm()
+            setFacebook()
+            setSms()
+            setCasein()
+            setVoicemail()
+            setInsights()        
         })
     }
 
@@ -162,10 +217,6 @@ const createTestCase = () => {
                             expectation: expectation,
                             notes: notes,
                             status: status,
-                            medium:medium,
-                            platform:platform,
-                            testtype:testtype,
-                            priority:priority
                     }
                     }),
                 headers: new Headers({
@@ -175,7 +226,6 @@ const createTestCase = () => {
             }).then(res => res.json())
             .then(logData => {
                 console.log(logData)
-    
                 setArea('')
                 setCategory('')
                 setSubcat('')
@@ -183,11 +233,33 @@ const createTestCase = () => {
                 setExpectation('')
                 setNotes('')
                 setDetails('')
-                setMedium([])
-                setPriority([])
-                setPlatform([])
-                setTesttype([])
+                setDeskphone()
+                setSharpenq()
+                setConnectphone()
+                setChrome()
+                setFirefox()
+                setCtisn()
+                setCtizd()
+                setCtisfdc()
+                setAndroid()
+                setIos()
+                setConnect()
+                setQuick()
+                setFull()
+                setRegression()
+                setAutomated()
+                setInboundcall()
+                setChat()
+                setEmail()
+                setTweet()
+                setTweetdm()
+                setFacebook()
+                setSms()
+                setCasein()
+                setVoicemail()
+                setInsights()        
                 setButtontext('Save')
+                setSearchValue('')
             })
         }
 
@@ -312,7 +384,7 @@ return(
                         <CustomInput type="switch" id="ctisfdc" name="ctisfdc" label="CTI: Salesforce" value={ctisfdc} onChange={(e) => setCtisfdc(e.target.value)}/>
                         <CustomInput type="switch" id="android" name="android" label="Android Mobile" value={android} onChange={(e) => setAndroid(e.target.value)}/>
                         <CustomInput type="switch" id="ios" name="ios" label="IoS Mobile" value={ios} onChange={(e) => setIos(e.target.value)}/>
-                        <CustomInput type="switch" id="connect" name="connect" label="Connect Desktop" value={connect} onChange={(e) => sectConnect(e.target.value)}/>
+                        <CustomInput type="switch" id="connect" name="connect" label="Connect Desktop" value={connect} onChange={(e) => setConnect(e.target.value)}/>
                     </Col>
                 </Row>
             </CardBody>
