@@ -47,19 +47,15 @@ return(
     <Sitebar clickLogout={props.clickLogout}/>
 <Row sm='2'style={{fontSize:'.8rem', backgroundColor: '#CFC7DC'}} >              
     <Col className='text-center' >
-    <Link to="/TestCaseCreate">Create Test Cases</Link>
+    <Link to="/TestCaseCreate">Test Cases Details</Link>
     </Col>
-    {/* {<Col className='text-center'>
-    <Link to="/TestList">List Test Cases</Link>
-    </Col>} */}
     <Col className='text-center'>
-    <Link to="/TestRun">Run Test Cases</Link>
+    <Link to="/TestRun">Test Case List</Link>
     </Col>
 </Row>
 <br />
 <Switch>
-    <Route exact path="/TestCaseCreate"><TestCaseCreate token={props.token} fetchOneTest={fetchOneTest} testToGet={testToGet}/></Route>
-    {/* {<Route exact path="/TestList"><TestList fetchTests={fetchTests} token={props.token} tests={tests}/></Route>} */}
+    <Route exact path="/TestCaseCreate"><TestCaseCreate token={props.token} fetchOneTest={fetchOneTest} testToGet={testToGet} /></Route>
     <Route exact path="/TestRun"><TestRun fetchTests={fetchTests}  token={props.token} tests={tests} /></Route>
 </Switch>
 </Router> 

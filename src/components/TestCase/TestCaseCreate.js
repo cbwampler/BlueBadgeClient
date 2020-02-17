@@ -24,6 +24,7 @@ const style = {
         }, 
     button:{
         bsSize: "sm",
+        width: '10rem',
         backgroundColor: '#624292', 
         marginRight: '1rem'
         },
@@ -45,34 +46,33 @@ const TestCaseCreate = (props) => {
     const [details, setDetails] = useState('')
     const [searchValue,setSearchValue] = useState('')
     const [buttontext, setButtontext] = useState('Save')
-    const [deskphone, setDeskphone] = useState()
-    const [sharpenq, setSharpenq] = useState()
-    const [connectphone, setConnectphone] = useState()
-    const [chrome, setChrome] = useState()
-    const [firefox, setFirefox] = useState()
-    const [ctisn, setCtisn] = useState()
-    const [ctizd, setCtizd] = useState()
-    const [ctisfdc, setCtisfdc] = useState()
-    const [android, setAndroid] = useState()
-    const [ios, setIos] = useState()
-    const [connect, setConnect] = useState()
-    const [quick, setQuick] = useState()
-    const [full, setFull] = useState()
-    const [regression, setRegression] = useState()
-    const [automated, setAutomated] = useState()
-    const [inboundcall, setInboundcall] = useState()
-    const [chat, setChat] = useState()
-    const [email, setEmail] = useState()
-    const [tweet, setTweet] = useState()
-    const [tweetdm, setTweetdm] = useState()
-    const [facebook, setFacebook] = useState()
-    const [sms, setSms] = useState()
-    const [casein, setCasein] = useState()
-    const [voicemail, setVoicemail] = useState()
-    const [insights, setInsights] = useState()
-    const [isCheckedDeskphone, setIsCheckedDeskphone] = useState("")
-    const [isCheckedSharpenq, setIsCheckedSharpenq] = useState("")
-    const [isCheckedConnectphone, setIsCheckedConnectphone] = useState("")
+    const [deskphone, setDeskphone] = useState('false')
+    const [sharpenq, setSharpenq] = useState('false')
+    const [connectphone, setConnectphone] = useState('false')
+    const [chrome, setChrome] = useState('false')
+    const [firefox, setFirefox] = useState('false')
+    const [ctisn, setCtisn] = useState('false')
+    const [ctizd, setCtizd] = useState('false')
+    const [ctisfdc, setCtisfdc] = useState('false')
+    const [android, setAndroid] = useState('false')
+    const [ios, setIos] = useState('false')
+    const [connect, setConnect] = useState('false')
+    const [quick, setQuick] = useState('false')
+    const [full, setFull] = useState('false')
+    const [regression, setRegression] = useState('false')
+    const [automated, setAutomated] = useState('false')
+    const [inboundcall, setInboundcall] = useState('false')
+    const [chat, setChat] = useState('false')
+    const [email, setEmail] = useState('false')
+    const [tweet, setTweet] = useState('false')
+    const [tweetdm, setTweetdm] = useState('false')
+    const [facebook, setFacebook] = useState('false')
+    const [sms, setSms] = useState('false')
+    const [casein, setCasein] = useState('false')
+    const [voicemail, setVoicemail] = useState('false')
+    const [insights, setInsights] = useState('false')
+    const [isChecked, setIsChecked] = useState(false)
+
 
     useEffect(() => {
         setDetails(props.testToGet.details);
@@ -107,6 +107,7 @@ const TestCaseCreate = (props) => {
         setCasein(props.testToGet.casein)
         setVoicemail(props.testToGet.voicemail)
         setInsights(props.testToGet.insights)
+        setIsChecked(props.testToGet.isChecked)
     }, [props.testToGet]
     )
 
@@ -119,32 +120,33 @@ const TestCaseCreate = (props) => {
         setNotes('')
         setDetails('')
         setSearchValue('')
-        setDeskphone()
-        setSharpenq()
-        setConnectphone()
-        setChrome()
-        setFirefox()
-        setCtisn()
-        setCtizd()
-        setCtisfdc()
-        setAndroid()
-        setIos()
-        setConnect()
-        setQuick()
-        setFull()
-        setRegression()
-        setAutomated()
-        setInboundcall()
-        setChat()
-        setEmail()
-        setTweet()
-        setTweetdm()
-        setFacebook()
-        setSms()
-        setCasein()
-        setVoicemail()
-        setInsights()        
+        setDeskphone('false')
+        setSharpenq('false')
+        setConnectphone('false')
+        setChrome('false')
+        setFirefox('false')
+        setCtisn('false')
+        setCtizd('false')
+        setCtisfdc('false')
+        setAndroid('false')
+        setIos('false')
+        setConnect('false')
+        setQuick('false')
+        setFull('false')
+        setRegression('false')
+        setAutomated('false')
+        setInboundcall('false')
+        setChat('false')
+        setEmail('false')
+        setTweet('false')
+        setTweetdm('false')
+        setFacebook('false')
+        setSms('false')
+        setCasein('false')
+        setVoicemail('false')
+        setInsights('false')        
         setButtontext('Save')
+        setIsChecked(false)
     }
 
 const createTestCase = () => {
@@ -201,31 +203,32 @@ const createTestCase = () => {
             setExpectation('')
             setNotes('')
             setDetails('')
-            setDeskphone()
-            setSharpenq()
-            setConnectphone()
-            setChrome()
-            setFirefox()
-            setCtisn()
-            setCtizd()
-            setCtisfdc()
-            setAndroid()
-            setIos()
-            setConnect()
-            setQuick()
-            setFull()
-            setRegression()
-            setAutomated()
-            setInboundcall()
-            setChat()
-            setEmail()
-            setTweet()
-            setTweetdm()
-            setFacebook()
-            setSms()
-            setCasein()
-            setVoicemail()
-            setInsights()        
+            setDeskphone('false')
+            setSharpenq('false')
+            setConnectphone('false')
+            setChrome('false')
+            setFirefox('false')
+            setCtisn('false')
+            setCtizd('false')
+            setCtisfdc('false')
+            setAndroid('false')
+            setIos('false')
+            setConnect('false')
+            setQuick('false')
+            setFull('false')
+            setRegression('false')
+            setAutomated('false')
+            setInboundcall('false')
+            setChat('false')
+            setEmail('false')
+            setTweet('false')
+            setTweetdm('false')
+            setFacebook('false')
+            setSms('false')
+            setCasein('false')
+            setVoicemail('false')
+            setInsights('false') 
+            setIsChecked(false)       
         })
     }
 
@@ -283,35 +286,84 @@ const createTestCase = () => {
                 setExpectation('')
                 setNotes('')
                 setDetails('')
-                setDeskphone()
-                setSharpenq()
-                setConnectphone()
-                setChrome()
-                setFirefox()
-                setCtisn()
-                setCtizd()
-                setCtisfdc()
-                setAndroid()
-                setIos()
-                setConnect()
-                setQuick()
-                setFull()
-                setRegression()
-                setAutomated()
-                setInboundcall()
-                setChat()
-                setEmail()
-                setTweet()
-                setTweetdm()
-                setFacebook()
-                setSms()
-                setCasein()
-                setVoicemail()
-                setInsights()        
+                setDeskphone('false')
+                setSharpenq('false')
+                setConnectphone('false')
+                setChrome('false')
+                setFirefox('false')
+                setCtisn('false')
+                setCtizd('false')
+                setCtisfdc('false')
+                setAndroid('false')
+                setIos('false')
+                setConnect('false')
+                setQuick('false')
+                setFull('false')
+                setRegression('false')
+                setAutomated('false')
+                setInboundcall('false')
+                setChat('false')
+                setEmail('false')
+                setTweet('false')
+                setTweetdm('false')
+                setFacebook('false')
+                setSms('false')
+                setCasein('false')
+                setVoicemail('false')
+                setInsights('false')        
                 setButtontext('Save')
                 setSearchValue('')
+                setIsChecked(false)
             })
         }
+
+const deleteTestcase = (id) => {
+    fetch(`${APIURL}/testcase/delete/${id}`, {
+        method: 'DELETE',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': props.token
+        })
+    })
+    .then(logData => {
+        console.log(logData)
+        setArea('')
+        setCategory('')
+        setSubcat('')
+        setStatus('')
+        setExpectation('')
+        setNotes('')
+        setDetails('')
+        setDeskphone('false')
+        setSharpenq('false')
+        setConnectphone('false')
+        setChrome('false')
+        setFirefox('false')
+        setCtisn('false')
+        setCtizd('false')
+        setCtisfdc('false')
+        setAndroid('false')
+        setIos('false')
+        setConnect('false')
+        setQuick('false')
+        setFull('false')
+        setRegression('false')
+        setAutomated('false')
+        setInboundcall('false')
+        setChat('false')
+        setEmail('false')
+        setTweet('false')
+        setTweetdm('false')
+        setFacebook('false')
+        setSms('false')
+        setCasein('false')
+        setVoicemail('false')
+        setInsights('false')        
+        setButtontext('Save')
+        setSearchValue('')
+        setIsChecked(false)
+    })
+}
 
 const handleSave = () => {
         if (buttontext === 'Save'){
@@ -324,8 +376,7 @@ return(
 <div style={style.base}>
 <Container fluid={true}>
     <h3 className='text-center'>Test Case Details</h3>
-    <Row>
-        
+    <Row> 
         <Col sm='3'> 
             <label htmlFor='searchArea' style={style.label}>Search for a Test Case to Edit</label>
             <InputGroup>
@@ -408,11 +459,11 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="deskphone" name="DeskPhone" label="Desk Phone" checked={isCheckedDeskphone} onChange={() => isCheckedDeskphone.length > 0 ? setIsCheckedDeskphone('') : setIsCheckedDeskphone("true")} />
-                        <CustomInput type="switch" id="sharpenq" name="sharpenq" label="Sharpen Q" checked={isCheckedSharpenq} onChange={() => isCheckedSharpenq.length > 0 ? setIsCheckedSharpenq('') : setIsCheckedSharpenq("true")} />
+                        <CustomInput type="switch" className="custom-switch" id="deskphone" name="deskphone" label="Desk Phone" onChange={(e) => setSharpenq(e.target.checked)} />
+                        <CustomInput type="switch" id="sharpenq" name="sharpenq" label="Sharpen Q" value={sharpenq} onChange={(e) => setSharpenq(e.target.checked)} />
                     </Col>
                     <Col>
-                        <CustomInput type="switch" id="connectphone" name="connectPhone" label="Connect Phone" checked={isCheckedConnectphone} onChange={() => isCheckedConnectphone.length > 0 ? setIsCheckedConnectphone('') : setIsCheckedConnectphone('true')} />
+                        <CustomInput type="switch" id="connectphone" name="connectPhone" label="Connect Phone" value={connectphone} onChange={(e) => setConnectphone(e.target.checked)}  />
                     </Col>
                 </Row>
             </CardBody>
@@ -425,8 +476,8 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="chrome" name="chrome" label="Chrome" value={chrome} onClick={(e) => setChrome(e.target.checked)} />
-                        <CustomInput type="switch" id="firefox" name="firefox" label="FireFox" value={firefox} onChange={(e) => setFirefox(e.target.checked)} />
+                        <CustomInput type="switch" id="chrome" name="chrome" label="Chrome" value={chrome} onChange={(e) => setChrome(e.target.checked)} />
+                        <CustomInput type="switch" id="firefox" name="firefox" label="FireFox" value={firefox} onChange={(e) => setFirefox(e.target.checked)}/>
                         <CustomInput type="switch" id="ctisn" name="ctisn" label="CTI: ServiceNow" value={ctisn} onChange={(e) => setCtisn(e.target.checked)} />
                         <CustomInput type="switch" id="ctizd" name="ctizd" label="CTI: ZenDesk" value={ctizd} onChange={(e) => setCtizd(e.target.checked)}/>       
                     </Col>
@@ -447,12 +498,12 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="quick" name="quick" label="Quick" value={quick} onChange={(e) => setQuick(e.target.value)}/>
-                        <CustomInput type="switch" id="full" name="full" label="Full" value={full} onChange={(e) => setFull(e.target.value)} />
+                        <CustomInput type="switch" id="quick" name="quick" label="Quick" value={quick} onChange={(e) => setQuick(e.target.checked)}/>
+                        <CustomInput type="switch" id="full" name="full" label="Full" value={full} onChange={(e) => setFull(e.target.checked)} />
                     </Col>
                     <Col>
-                        <CustomInput type="switch" id="regression" name="regression" label="Regression" value={regression} onChange={(e) => setRegression(e.target.value)}/>
-                        <CustomInput type="switch" id="automated" name="automated" label="Automated" value={automated} onChange={(e) => setAutomated(e.target.value)}/>
+                        <CustomInput type="switch" id="regression" name="regression" label="Regression" value={regression} onChange={(e) => setRegression(e.target.checked)}/>
+                        <CustomInput type="switch" id="automated" name="automated" label="Automated" value={automated} onChange={(e) => setAutomated(e.target.checked)}/>
                     </Col>
                 </Row>
             </CardBody>
@@ -465,18 +516,18 @@ return(
             <CardBody>
                 <Row>
                     <Col>
-                        <CustomInput type="switch" id="inboundcall" name="inboundcall" label="Inbound Call" value={inboundcall} onChange={(e) => setInboundcall(e.target.value)} />
-                        <CustomInput type="switch" id="chat" name="chat" label="Chat" value={chat} onChange={(e) => setChat(e.target.value)}/>
-                        <CustomInput type="switch" id="email" name="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                        <CustomInput type="switch" id="tweet" name="tweet" label="Tweet" value={tweet} onChange={(e) => setTweet(e.target.value)}/>
-                        <CustomInput type="switch" id="tweetdm" name="tweetdm" label="Tweet DM" value={tweetdm} onChange={(e) => setTweetdm(e.target.value)}/>
+                        <CustomInput type="switch" id="inboundcall" name="inboundcall" label="Inbound Call" value={inboundcall} onChange={(e) => setInboundcall(e.target.checked)} />
+                        <CustomInput type="switch" id="chat" name="chat" label="Chat" value={chat} onChange={(e) => setChat(e.target.checked)}/>
+                        <CustomInput type="switch" id="email" name="email" label="Email" value={email} onChange={(e) => setEmail(e.target.checked)}/>
+                        <CustomInput type="switch" id="tweet" name="tweet" label="Tweet" value={tweet} onChange={(e) => setTweet(e.target.checked)}/>
+                        <CustomInput type="switch" id="tweetdm" name="tweetdm" label="Tweet DM" value={tweetdm} onChange={(e) => setTweetdm(e.target.checked)}/>
                     </Col>
                     <Col>                     
-                        <CustomInput type="switch" id="facebook" name="facebook" label="Facebook" value={facebook} onChange={(e) => setFacebook(e.target.value)}/>
-                        <CustomInput type="switch" id="sms" name="sms" label="SMS" value={sms} onChange={(e) => setSms(e.target.value)}/>
-                        <CustomInput type="switch" id="casein" name="casein" label="CaseIn" value={casein} onChange={(e) => setCasein(e.target.value)}/>
-                        <CustomInput type="switch" id="voicemail" name="voicemail" label="Voicemail" value={voicemail} onChange={(e) => setVoicemail(e.target.value)}/>
-                        <CustomInput type="switch" id="insights" name="insights" label="Insights" value={insights} onChange={(e) => setInsights(e.target.value)}/>
+                        <CustomInput type="switch" id="facebook" name="facebook" label="Facebook" value={facebook} onChange={(e) => setFacebook(e.target.checked)}/>
+                        <CustomInput type="switch" id="sms" name="sms" label="SMS" value={sms} onChange={(e) => setSms(e.target.checked)}/>
+                        <CustomInput type="switch" id="casein" name="casein" label="CaseIn" value={casein} onChange={(e) => setCasein(e.target.checked)}/>
+                        <CustomInput type="switch" id="voicemail" name="voicemail" label="Voicemail" value={voicemail} onChange={(e) => setVoicemail(e.target.checked)}/>
+                        <CustomInput type="switch" id="insights" name="insights" label="Insights" value={insights} onChange={(e) => setInsights(e.target.checked)}/>
                     </Col>
                 </Row>
             </CardBody>
@@ -487,8 +538,9 @@ return(
 <Row className="form-row text-center">
     <Col>
         <Button style={style.button} onClick={() => {handleSave()}}>{buttontext}</Button>
-        <Button style={style.button} onClick={event => window.location.href='/'}>Cancel</Button>
+        <Button style={style.button} onClick={() => window.location.href='/'}>Cancel</Button>
         <Button style={style.button} onClick={clearData} >Clear Form</Button>
+        <Button style={style.button} onClick={() => {deleteTestcase(searchValue)}}>Delete</Button> 
     </Col> 
 </Row>
 </Container>
