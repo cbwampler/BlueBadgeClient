@@ -53,9 +53,9 @@ const testcaseMapper = () => {
                 <td>{test.notes}</td>
                 <td>{test.result}<Input style={style.field} type='select' name='result' placeholder='result'>
                     <option>Not Set</option>
-                    <option style={style.result} >Passed</option>
-                    <option backgroundColor="red">Failed</option>
-                    <option backgroundColor="grey">Not Run</option>
+                    <option >Passed</option>
+                    <option >Failed</option>
+                    <option >Not Run</option>
                     <option>On Hold</option>
                 </Input></td>
                 <td>{test.resultNotes}<Input style={style.field} type="textarea" name='resultNotes' placeholder='Testing Notes'></Input></td>

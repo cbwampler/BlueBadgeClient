@@ -119,31 +119,31 @@ const TestCaseCreate = (props) => {
         setNotes('')
         setDetails('')
         setSearchValue('')
-        setDeskphone('')
-        setSharpenq('')
-        setConnectphone('')
-        setChrome('')
-        setFirefox('')
-        setCtisn('')
-        setCtizd('')
-        setCtisfdc('')
-        setAndroid('')
-        setIos('')
-        setConnect('')
-        setQuick('')
-        setFull('')
-        setRegression('')
-        setAutomated('')
-        setInboundcall('')
-        setChat('')
-        setEmail('')
-        setTweet('')
-        setTweetdm('')
-        setFacebook('')
-        setSms('')
-        setCasein('')
-        setVoicemail('')
-        setInsights('')        
+        setDeskphone(false)
+        setSharpenq(false)
+        setConnectphone(false)
+        setChrome(false)
+        setFirefox(false)
+        setCtisn(false)
+        setCtizd(false)
+        setCtisfdc(false)
+        setAndroid(false)
+        setIos(false)
+        setConnect(false)
+        setQuick(false)
+        setFull(false)
+        setRegression(false)
+        setAutomated(false)
+        setInboundcall(false)
+        setChat(false)
+        setEmail(false)
+        setTweet(false)
+        setTweetdm(false)
+        setFacebook(false)
+        setSms(false)
+        setCasein(false)
+        setVoicemail(false)
+        setInsights(false)        
         setButtontext('Save')
     }
 
@@ -152,48 +152,47 @@ const createTestCase = () => {
             method: 'POST',
             body: JSON.stringify(
                 {
-                    testcase: {
-                        area: area,
-                        category: category,
-                        subcat: subcat,
-                        details: details,
-                        expectation:expectation,
-                        notes: notes,
-                        status: status,
-                        deskphone: deskphone,
-                        sharpenq: sharpenq,
-                        connectphone: connectphone,
-                        chrome: chrome,
-                        firefox: firefox,
-                        ctisn: ctisn,
-                        ctizd: ctizd,
-                        ctisfdc: ctisfdc,
-                        android: android,
-                        ios: ios,
-                        connect: connect,
-                        quick: quick,
-                        full: full,
-                        regression: regression,
-                        automated: automated,
-                        inboundcall: inboundcall,
-                        chat: chat,
-                        email: email,
-                        tweet: tweet,
-                        tweetdm: tweetdm,
-                        facebook: facebook,
-                        sms: sms,
-                        casein: casein,
-                        voicemail: voicemail,
-                        insights: insights
-                }
-                }),
-            headers: new Headers({
-                'Content-Type':'application/json',
-                'Authorization':props.token
+            testcase: {
+                area: area,
+                category: category,
+                subcat: subcat,
+                details: details,
+                expectation:expectation,
+                notes: notes,
+                status: status,
+                deskphone: deskphone,
+                sharpenq: sharpenq,
+                connectphone: connectphone,
+                chrome: chrome,
+                firefox: firefox,
+                ctisn: ctisn,
+                ctizd: ctizd,
+                ctisfdc: ctisfdc,
+                android: android,
+                ios: ios,
+                connect: connect,
+                quick: quick,
+                full: full,
+                regression: regression,
+                automated: automated,
+                inboundcall: inboundcall,
+                chat: chat,
+                email: email,
+                tweet: tweet,
+                tweetdm: tweetdm,
+                facebook: facebook,
+                sms: sms,
+                casein: casein,
+                voicemail: voicemail,
+                insights: insights
+        }
+        }),
+        headers: new Headers({
+            'Content-Type':'application/json',
+            'Authorization':props.token
             })
         }).then(res => res.json())
-        .then(logData => {
-            console.log(logData)
+        .then(logData => { console.log(logData)
             setArea('')
         setCategory('')
         setSubcat('')
@@ -202,33 +201,33 @@ const createTestCase = () => {
         setNotes('')
         setDetails('')
         setSearchValue('')
-        setDeskphone('')
-        setSharpenq('')
-        setConnectphone('')
-        setChrome('')
-        setFirefox('')
-        setCtisn('')
-        setCtizd('')
-        setCtisfdc('')
-        setAndroid('')
-        setIos('')
-        setConnect('')
-        setQuick('')
-        setFull('')
-        setRegression('')
-        setAutomated('')
-        setInboundcall('')
-        setChat('')
-        setEmail('')
-        setTweet('')
-        setTweetdm('')
-        setFacebook('')
-        setSms('')
-        setCasein('')
-        setVoicemail('')
-        setInsights('')        
+        setDeskphone(false)
+        setSharpenq(false)
+        setConnectphone(false)
+        setChrome(false)
+        setFirefox(false)
+        setCtisn(false)
+        setCtizd(false)
+        setCtisfdc(false)
+        setAndroid(false)
+        setIos(false)
+        setConnect(false)
+        setQuick(false)
+        setFull(false)
+        setRegression(false)
+        setAutomated(false)
+        setInboundcall(false)
+        setChat(false)
+        setEmail(false)
+        setTweet(false)
+        setTweetdm(false)
+        setFacebook(false)
+        setSms(false)
+        setCasein(false)
+        setVoicemail(false)
+        setInsights(false)        
         setButtontext('Save')
-        })
+            })
     }
 
     const EditTestCase = (id) => {
@@ -279,39 +278,39 @@ const createTestCase = () => {
             .then(logData => {
                 console.log(logData)
                 setArea('')
-            setCategory('')
-            setSubcat('')
-            setStatus('')
-            setExpectation('')
-            setNotes('')
-            setDetails('')
-            setSearchValue('')
-            setDeskphone('')
-            setSharpenq('')
-            setConnectphone('')
-            setChrome('')
-            setFirefox('')
-            setCtisn('')
-            setCtizd('')
-            setCtisfdc('')
-            setAndroid('')
-            setIos('')
-            setConnect('')
-            setQuick('')
-            setFull('')
-            setRegression('')
-            setAutomated('')
-            setInboundcall('')
-            setChat('')
-            setEmail('')
-            setTweet('')
-            setTweetdm('')
-            setFacebook('')
-            setSms('')
-            setCasein('')
-            setVoicemail('')
-            setInsights('')        
-            setButtontext('Save')
+                setCategory('')
+                setSubcat('')
+                setStatus('')
+                setExpectation('')
+                setNotes('')
+                setDetails('')
+                setSearchValue('')
+                setDeskphone(false)
+                setSharpenq(false)
+                setConnectphone(false)
+                setChrome(false)
+                setFirefox(false)
+                setCtisn(false)
+                setCtizd(false)
+                setCtisfdc(false)
+                setAndroid(false)
+                setIos(false)
+                setConnect(false)
+                setQuick(false)
+                setFull(false)
+                setRegression(false)
+                setAutomated(false)
+                setInboundcall(false)
+                setChat(false)
+                setEmail(false)
+                setTweet(false)
+                setTweetdm(false)
+                setFacebook(false)
+                setSms(false)
+                setCasein(false)
+                setVoicemail(false)
+                setInsights(false)        
+                setButtontext('Save')
             })
         }
 
@@ -333,31 +332,31 @@ const deleteTestcase = (id) => {
         setNotes('')
         setDetails('')
         setSearchValue('')
-        setDeskphone('')
-        setSharpenq('')
-        setConnectphone('')
-        setChrome('')
-        setFirefox('')
-        setCtisn('')
-        setCtizd('')
-        setCtisfdc('')
-        setAndroid('')
-        setIos('')
-        setConnect('')
-        setQuick('')
-        setFull('')
-        setRegression('')
-        setAutomated('')
-        setInboundcall('')
-        setChat('')
-        setEmail('')
-        setTweet('')
-        setTweetdm('')
-        setFacebook('')
-        setSms('')
-        setCasein('')
-        setVoicemail('')
-        setInsights('')        
+        setDeskphone(false)
+        setSharpenq(false)
+        setConnectphone(false)
+        setChrome(false)
+        setFirefox(false)
+        setCtisn(false)
+        setCtizd(false)
+        setCtisfdc(false)
+        setAndroid(false)
+        setIos(false)
+        setConnect(false)
+        setQuick(false)
+        setFull(false)
+        setRegression(false)
+        setAutomated(false)
+        setInboundcall(false)
+        setChat(false)
+        setEmail(false)
+        setTweet(false)
+        setTweetdm(false)
+        setFacebook(false)
+        setSms(false)
+        setCasein(false)
+        setVoicemail(false)
+        setInsights(false)        
         setButtontext('Save')
     })
 }
