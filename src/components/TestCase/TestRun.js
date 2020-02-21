@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import { Container, Table, Row, Col, Button, Input} from 'reactstrap'
-import APIURL from '../../helpers/environment'
 
 const style = {
+    result:{
+        backgroundColor: 'green'
+    },
     field:{
-        marginTop: '.5rem', 
+        marginTop: '0rem', 
         padding:'.5rem', 
         fontWeight: 'lighter',
         bsSize: "xs",
@@ -16,32 +18,28 @@ const style = {
         button:{
             backgroundColor: '#624292', 
             marginRight: '1rem',
-            marginTop: '.5rem',
+            marginTop: '1.5rem',
             bsSize: "xs",
             height: '2rem',
             width: '10rem'
             },
+    label:{ 
+        marginBottom: '0rem',
+        fontWeight: 'normal',
+        fontSize:'0.8em', 
+        fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
     }
+}
 
-    
 const TestRun = (props) => {
-
+    
     useEffect(() => {
         props.fetchTests(); 
     }, [])
 
-const deleteTestcase = (testcase) => {
-    fetch(`${APIURL}/testcase/delete/${testcase.id}`, {
-        method: 'DELETE',
-        headers: new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': props.token
-        })
-    })
-.then(() => props.fetchTests())
-}
 
 const testcaseMapper = () => {
+
 
     return props.tests.map((test, index) => {
         return(      
@@ -55,9 +53,9 @@ const testcaseMapper = () => {
                 <td>{test.notes}</td>
                 <td>{test.result}<Input style={style.field} type='select' name='result' placeholder='result'>
                     <option>Not Set</option>
-                    <option>Passed</option>
-                    <option>Failed</option>
-                    <option>Not Run</option>
+                    <option style={style.result} >Passed</option>
+                    <option backgroundColor="red">Failed</option>
+                    <option backgroundColor="grey">Not Run</option>
                     <option>On Hold</option>
                 </Input></td>
                 <td>{test.resultNotes}<Input style={style.field} type="textarea" name='resultNotes' placeholder='Testing Notes'></Input></td>
@@ -65,7 +63,7 @@ const testcaseMapper = () => {
         )
     })
 }
-    
+
 return(
     
 <div>
@@ -73,59 +71,84 @@ return(
 <h2 className="text-center">Test Case List</h2>
 <Row className="form-row text-center">
     <Col xs>
-    <Input style={style.field} type='select' name='Filter1' placeholder='Area of Application' >
+    <label htmlFor='area' style={style.label}>Application Area</label>
+    <Input style={style.field} type='select' name='select' id='selectMulti' placeholder='Area of Application'>
+    <option>Not Set</option>
+                <option>SharpenQ</option> 
+                <option>End User</option> 
+                <option>Admin</option> 
+                <option>Developer</option>
+                <option>Contacts</option>
+                <option>People</option> 
+                <option>SharpenDB</option> 
+                <option>SharpenQ Vue</option> 
+                <option>Logic/Action</option>
+                <option>MicroServices</option>
+                <option>Not Set</option>
+                <option>Transcriptions</option> 
+                <option>Recordings</option> >
+    </Input>
+    </Col>
+    <Col xs>
+    <label htmlFor='category' style={style.label}>Category</label>   
+    <Input style={style.field} type='select' name='selectMulti' placeholder='Category'>
+    <option>Not Set</option>
+                <option>Inbound</option> 
+                <option>Outbound</option> 
+                <option>History</option> 
+                <option>Auto Answer</option>
+                <option>Header</option>
+                <option>Tabs</option> 
+                <option>End Interaction</option> 
+                <option>SharpenDB</option> 
+                <option>Auto Attendant</option>>
+    </Input>
+    </Col>
+    <Col xs>
+    <label htmlFor='subcat' style={style.label}>SubCategory</label>   
+    <Input style={style.field} type='select' name='selectMulti' placeholder='subcat'>
         <option>Not Set</option>
         <option>Area1</option>
         <option>Area2</option>
     </Input>
     </Col>
     <Col xs>
-    <Input style={style.field} type='select' name='Filter2' placeholder='Category'>
+    <label htmlFor='priority' style={style.label}>Priority</label>   
+    <Input style={style.field} type='select' name='selectMulti' placeholder='Priority'>
         <option>Not Set</option>
         <option>Area1</option>
         <option>Area2</option>
     </Input>
     </Col>
     <Col xs>
-    <Input style={style.field} type='select' name='Filter3' placeholder='Interface'>
+    <label htmlFor='platform' style={style.label}>Platform</label>   
+    <Input style={style.field} type='select' name='selectMulti' placeholder='Platform'>
         <option>Not Set</option>
         <option>Area1</option>
         <option>Area2</option>
     </Input>
     </Col>
     <Col xs>
-    <Input style={style.field} type='select' name='Filter4' placeholder='Priority'>
+    <label htmlFor='testtype' style={style.label}>Test Type</label>   
+    <Input style={style.field} type='select' name='selectMulti' placeholder='testtype'>
         <option>Not Set</option>
         <option>Area1</option>
         <option>Area2</option>
     </Input>
     </Col>
     <Col xs>
-    <Input style={style.field} type='select' name='Filter5' placeholder='Platform'>
+    <label htmlFor='medium' style={style.label}>Interface</label>   
+    <Input style={style.field} type='select' name='selectMulti' placeholder='medium'>
         <option>Not Set</option>
         <option>Area1</option>
         <option>Area2</option>
     </Input>
     </Col>
-    <Col xs>
-    <Input style={style.field} type='select' name='Filter6' placeholder='TestType'>
-        <option>Not Set</option>
-        <option>Area1</option>
-        <option>Area2</option>
-    </Input>
-    </Col>
-    <Col xs>
-    <Input style={style.field} type='select' name='Filter6' placeholder='subcat'>
-        <option>Not Set</option>
-        <option>Area1</option>
-        <option>Area2</option>
-    </Input>
-    </Col>
-    <Col>
+    <Col>  
         <Button style={style.button}>Filter Tests</Button>
     </Col>
 </Row>
-
+<br/>
 <Table size="sm" style={style.base} striped responsive>
     <thead>
     <tr>
