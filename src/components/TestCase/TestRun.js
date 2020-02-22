@@ -26,7 +26,7 @@ const style = {
     label:{ 
         marginBottom: '0rem',
         fontWeight: 'normal',
-        fontSize:'0.8em', 
+        fontSize:'1em', 
         fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
     }
 }
@@ -37,9 +37,7 @@ const TestRun = (props) => {
         props.fetchTests(); 
     }, [])
 
-
 const testcaseMapper = () => {
-
 
     return props.tests.map((test, index) => {
         return(      
@@ -51,21 +49,17 @@ const testcaseMapper = () => {
                 <td>{test.details}</td>
                 <td>{test.expectation}</td>
                 <td>{test.notes}</td>
-                <td>{test.result}<Input style={style.field} type='select' name='result' placeholder='result'>
-                    <option>Not Set</option>
-                    <option >Passed</option>
-                    <option >Failed</option>
-                    <option >Not Run</option>
-                    <option>On Hold</option>
-                </Input></td>
-                <td>{test.resultNotes}<Input style={style.field} type="textarea" name='resultNotes' placeholder='Testing Notes'></Input></td>
+                <td>{test.result}</td>
+                <td>{test.resultNotes}</td>
+                <td><Button color='link' style={style.label} onClick={() => {props.executeTest(props.tests); props.executeOn()}}>Run Test</Button></td>
             </tr>
+
         )
     })
 }
 
 return(
-    
+
 <div>
 <Container fluid={true}>
 <h2 className="text-center">Test Case List</h2>
@@ -116,32 +110,49 @@ return(
     <label htmlFor='priority' style={style.label}>Priority</label>   
     <Input style={style.field} type='select' name='selectMulti' placeholder='Priority'>
         <option>Not Set</option>
-        <option>Area1</option>
-        <option>Area2</option>
+        <option>Quick</option>
+        <option>Full</option>
+        <option>Automated</option>
+        <option>Regression</option>
     </Input>
     </Col>
     <Col xs>
     <label htmlFor='platform' style={style.label}>Platform</label>   
     <Input style={style.field} type='select' name='selectMulti' placeholder='Platform'>
         <option>Not Set</option>
-        <option>Area1</option>
-        <option>Area2</option>
+        <option>Chrome</option>
+        <option>Firefox</option>
+        <option>CTI:SN</option>
+        <option>CTI:SFDC</option>
+        <option>CTI:ZD</option>
+        <option>IoS</option>
+        <option>Android</option>
     </Input>
     </Col>
     <Col xs>
     <label htmlFor='testtype' style={style.label}>Test Type</label>   
     <Input style={style.field} type='select' name='selectMulti' placeholder='testtype'>
         <option>Not Set</option>
-        <option>Area1</option>
-        <option>Area2</option>
+        <option>InboundCall</option>
+        <option>Chat</option>
+        <option>Email</option>
+        <option>Tweet</option>
+        <option>TweetDM</option>
+        <option>Facebook</option>
+        <option>SMS</option>
+        <option>CaseIn</option>
+        <option>Voicemail</option>
+        <option>Insights</option>
+
     </Input>
     </Col>
     <Col xs>
     <label htmlFor='medium' style={style.label}>Interface</label>   
     <Input style={style.field} type='select' name='selectMulti' placeholder='medium'>
         <option>Not Set</option>
-        <option>Area1</option>
-        <option>Area2</option>
+        <option>Desk Phone</option>
+        <option>SharpenQ</option>
+        <option>Connect Phone</option>
     </Input>
     </Col>
     <Col>  
@@ -153,28 +164,19 @@ return(
     <thead>
     <tr>
         <th width='1%'>#</th>
-        <th width='5%'>Application Area</th>
+        <th width='10%'>Application Area</th>
         <th width='5%'>Category</th>
-        <th width='4%'>SubCat</th>
-        <th width='20%'>Test Details</th>
-        <th width='20%'>Expectation</th>
-        <th width='20%'>Notes</th>
-        <th width='5%' >Result</th>
-        <th width='20%'>Testing Notes</th>
+        <th width='5%'>SubCat</th>
+        <th width='25%'>Test Details</th>
+        <th width='25%'>Expectation</th>
+        <th width='25%'>Notes</th>
+        <th width='4%'></th>
     </tr>
     </thead>
     <tbody>
         {testcaseMapper()}
     </tbody>
 </Table>
-
-<Row className="form-row text-center">
-<Col>
-    <Button style={style.button}>Save Results</Button>
-    <Button style={style.button}>Button2</Button>
-    <Button style={style.button}>Button3</Button>
-</Col> 
-</Row>
 </Container>
 </div>
 )

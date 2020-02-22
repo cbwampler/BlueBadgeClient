@@ -378,8 +378,7 @@ return(
             <InputGroup>
                 <InputGroupAddon addonType="append">
                     <Button onClick={()=>{props.fetchOneTest(searchValue)
-                    setButtontext('Edit')
-                    
+                    setButtontext('Edit')    
                 } }
                     style={{backgroundColor: '#624292', height: '2.3rem'}}> Submit</Button>
                 </InputGroupAddon>
